@@ -1,0 +1,58 @@
+#compdef vercel-sweep
+
+# Completes `-` under every command path in _vercel and reports each path whose offered options
+# differ from the ones that path declares.
+
+local line command_path prefix part spec offered declared
+local -a paths parts subs alias_pairs opts args global_opts expected report
+local -i globals skip
+
+for line in "${(@f)$(<$VERCEL_COMPLETION_DIR/_vercel)}"; do
+  [[ $line == "    '"*"')" ]] && paths+=("${${line#    \'}%\'\)}")
+done
+
+# The helper functions only exist once _vercel has run.
+words=(vercel -)
+CURRENT=2
+PREFIX=-
+_vercel
+
+for command_path in $paths; do
+  parts=(${=command_path})
+  words=(vercel)
+  prefix=
+  _vercel_node "$prefix"
+  for part in $parts; do
+    repeat $skip words+=(placeholder)
+    words+=($part)
+    prefix="${prefix:+$prefix }$part"
+    _vercel_node "$prefix"
+  done
+  repeat $skip words+=(placeholder)
+  words+=(-)
+  CURRENT=$#words
+  PREFIX=-
+  vercel_test_output=()
+
+  _vercel 2>> $VERCEL_TEST_TMP/sweep-stderr
+
+  _vercel_node "$command_path"
+  _vercel_globals
+  (( globals )) && opts+=($global_opts)
+  expected=()
+  for spec in $opts; do
+    spec=${spec#\(*\)}
+    expected+=(${${${spec#\*}%%[\[:]*}%[=+]})
+  done
+  offered=${(j: :)${(ou)${(M)vercel_test_output:#-?*}}}
+  declared=${(j: :)${(ou)expected}}
+  if [[ $offered != $declared ]]; then
+    report+=("'$command_path' offered [$offered] but declares [$declared]")
+  fi
+done
+
+if [[ -s $VERCEL_TEST_TMP/sweep-stderr ]]; then
+  report+=("completion wrote to stderr: $(<$VERCEL_TEST_TMP/sweep-stderr)")
+fi
+vercel_test_output=("swept $#paths command paths" $report)
+return 0
