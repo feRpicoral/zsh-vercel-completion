@@ -4,6 +4,10 @@ on:
   schedule:
     - cron: "0 12 * * *"
   workflow_dispatch:
+    inputs:
+      version:
+        description: Vercel CLI version to generate from
+        default: latest
 
 permissions:
   contents: write
@@ -23,8 +27,10 @@ jobs:
       - name: Install zsh
         run: sudo apt-get update && sudo apt-get install -y zsh
 
-      - name: Regenerate from the latest Vercel CLI
-        run: ./scripts/update.sh latest
+      - name: Regenerate from the Vercel CLI
+        env:
+          VERSION: ${{ inputs.version || 'latest' }}
+        run: ./scripts/update.sh "$VERSION"
 
       - name: Check for changes
         id: changes
