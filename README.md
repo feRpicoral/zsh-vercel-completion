@@ -55,7 +55,13 @@ autoload -Uz compinit && compinit
 
 The generator needs Node (see `.nvmrc`) and has no dependencies of its own.
 
-Regenerate against a published release, `latest` by default:
+Regenerate for the Vercel CLI version you have installed:
+
+```bash
+scripts/update.sh
+```
+
+Or for a specific published release, or `latest`:
 
 ```bash
 scripts/update.sh 62.1.0

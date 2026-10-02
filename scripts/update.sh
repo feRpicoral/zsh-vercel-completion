@@ -1,10 +1,19 @@
 #!/usr/bin/env bash
 # Regenerates _vercel from a published Vercel CLI release.
-# Usage: scripts/update.sh [version]   (defaults to "latest")
+# Usage: scripts/update.sh [version|latest]   (defaults to the version of the installed CLI)
 
 set -euo pipefail
 
-version="${1:-latest}"
+if [[ $# -gt 0 ]]; then
+  version="$1"
+else
+  version="$(vercel --version 2>/dev/null || true)"
+  if [[ -z "$version" ]]; then
+    echo "Could not read the installed vercel version; pass a version or \"latest\"." >&2
+    exit 1
+  fi
+fi
+
 root="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 workdir="$(mktemp -d)"
 trap 'rm -rf "$workdir"' EXIT
