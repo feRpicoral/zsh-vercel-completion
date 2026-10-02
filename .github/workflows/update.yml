@@ -1,0 +1,66 @@
+name: Update completions
+
+on:
+  schedule:
+    - cron: "0 12 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version-file: .nvmrc
+
+      - name: Install zsh
+        run: sudo apt-get update && sudo apt-get install -y zsh
+
+      - name: Regenerate from the latest Vercel CLI
+        run: ./scripts/update.sh latest
+
+      - name: Check for changes
+        id: changes
+        run: |
+          if git diff --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+            echo "version=$(cat vercel-version)" >> "$GITHUB_OUTPUT"
+          fi
+
+      # Pull requests opened with GITHUB_TOKEN do not trigger other workflows, so the tests
+      # have to run here.
+      - name: Run completion tests
+        if: steps.changes.outputs.changed == 'true'
+        run: ./scripts/test.zsh
+
+      - name: Open pull request
+        if: steps.changes.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          VERSION: ${{ steps.changes.outputs.version }}
+        run: |
+          branch="update/vercel-$VERSION"
+          if git ls-remote --exit-code --heads origin "$branch" > /dev/null; then
+            echo "A pull request branch for vercel $VERSION already exists"
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -b "$branch"
+          git add _vercel vercel-version
+          git commit -m "feat: update completions for vercel $VERSION"
+          git push origin "$branch"
+
+          gh pr create \
+            --title "feat: update completions for vercel $VERSION" \
+            --body "Regenerated \`_vercel\` from the command definitions in vercel $VERSION."
