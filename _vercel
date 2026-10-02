@@ -1,6 +1,6 @@
 #compdef vercel vc
 
-# Generated from the command definitions bundled with Vercel CLI 62.1.0 (sandbox 4.4.0).
+# Generated from the command definitions bundled with Vercel CLI 62.2.0 (sandbox 4.4.0).
 # Hidden commands and deprecated options are left out, as they are in `vercel --help`.
 
 _vercel_node() {
@@ -537,8 +537,8 @@ _vercel_node() {
         'ls:List alert rules for a project or team'
         'list:List alert rules for a project or team'
         'schema:Show alert rule request fields and examples'
-        'add:Create an alert rule from a JSON body'
         'create:Create an alert rule from a JSON body'
+        'add:Create an alert rule from a JSON body'
         'inspect:Show one alert rule by ID'
         'get:Show one alert rule by ID'
         'rm:Delete an alert rule'
@@ -548,7 +548,7 @@ _vercel_node() {
         'patch:Patch an alert rule or change its scope'
         'notifications:List and manage linked Slack and webhook destinations for alert rules'
       )
-      alias_pairs=(list ls create add get inspect remove rm delete rm patch update)
+      alias_pairs=(list ls add create get inspect remove rm delete rm patch update)
       args=(': :->command')
       ;;
     'alerts rules ls')
@@ -566,7 +566,7 @@ _vercel_node() {
         '(-F --format)'{-F+,--format=}'[Specify the output format (json)]:FORMAT:(json)'
       )
       ;;
-    'alerts rules add')
+    'alerts rules create')
       opts=(
         '(-p --project)'{-p+,--project=}'[Use a project by name or ID]:NAME_OR_ID: '
         '(-a --all)'{-a,--all}'[Apply the rule to all projects in the selected team]'
@@ -2579,11 +2579,12 @@ _vercel_node() {
       subs=(
         'list:List all SDK keys for the current project'
         'ls:List all SDK keys for the current project'
+        'create:Create a new SDK key'
         'add:Create a new SDK key'
         'remove:Delete an SDK key'
         'rm:Delete an SDK key'
       )
-      alias_pairs=(ls list rm remove)
+      alias_pairs=(ls list add create rm remove)
       args=(': :->command')
       ;;
     'flags sdk-keys list')
@@ -2592,7 +2593,7 @@ _vercel_node() {
         '--json[Output in JSON format]'
       )
       ;;
-    'flags sdk-keys add')
+    'flags sdk-keys create')
       opts=(
         '--project=[Project name or ID (defaults to the linked project)]:NAME_OR_ID: '
         '--type=[The type of SDK key (server, client, or mobile)]:TYPE: '
@@ -2638,8 +2639,8 @@ _vercel_node() {
       subs=(
         'list:List Global Config stores for the current team'
         'ls:List Global Config stores for the current team'
-        'add:Create a Global Config store'
         'create:Create a Global Config store'
+        'add:Create a Global Config store'
         'get:Show metadata for a Global Config (id `ecfg_…` or slug)'
         'inspect:Show metadata for a Global Config (id `ecfg_…` or slug)'
         'update:Rename a Global Config (`--slug`) and/or patch items (`--patch` JSON)'
@@ -2650,7 +2651,7 @@ _vercel_node() {
         'tokens:List, create (`--add`), or revoke (`--remove`) read tokens for a Global Config'
         'backups:List, inspect, or restore Global Config backups'
       )
-      alias_pairs=(ls list create add inspect get rm remove delete remove)
+      alias_pairs=(ls list add create inspect get rm remove delete remove)
       opts=(
         '(-F --format)'{-F+,--format=}'[Specify the output format (json)]:FORMAT:(json)'
         '--json[Output as JSON]'
@@ -2663,7 +2664,7 @@ _vercel_node() {
         '--json[Output as JSON]'
       )
       ;;
-    'global-config add')
+    'global-config create')
       opts=(
         '(-F --format)'{-F+,--format=}'[Specify the output format (json)]:FORMAT:(json)'
         '--json[Output as JSON]'
@@ -3014,8 +3015,8 @@ _vercel_node() {
         'ls:Show all KMS issuers'
         'inspect:Show an issuer with its signing keys and grants'
         'get:Show an issuer with its signing keys and grants'
-        'add:Create an issuer with a Vercel-generated signing key'
         'create:Create an issuer with a Vercel-generated signing key'
+        'add:Create an issuer with a Vercel-generated signing key'
         'import:Create an issuer from a private key you already have'
         'update:Rename an issuer or change its claims schema'
         'remove:Delete an issuer and all of its keys'
@@ -3031,7 +3032,7 @@ _vercel_node() {
         'rm-grant:Revoke a project'\''s permission to sign with an issuer'
         'delete-grant:Revoke a project'\''s permission to sign with an issuer'
       )
-      alias_pairs=(ls list get inspect create add rm remove delete remove rm-grant remove-grant delete-grant remove-grant)
+      alias_pairs=(ls list get inspect add create rm remove delete remove rm-grant remove-grant delete-grant remove-grant)
       opts=(
         '(-F --format)'{-F+,--format=}'[Specify the output format (json)]:FORMAT:(json)'
         '--json[Output as JSON]'
@@ -3055,7 +3056,7 @@ _vercel_node() {
       )
       args=(':issuerId: ')
       ;;
-    'kms add')
+    'kms create')
       opts=(
         '(-a --algorithm)'{-a+,--algorithm=}'[Signing algorithm: RS256, RS384, RS512, PS256, PS384, PS512, ES256, ES384, ES512, EdDSA (default: RS512)]:ALGORITHM: '
         '--claims-schema=[JSON Schema validating token claims, as inline JSON, `@<file>`, or `@-` for stdin]:JSON: '
@@ -3296,7 +3297,8 @@ _vercel_node() {
       ;;
     'project')
       subs=(
-        'add:Add a new project'
+        'create:Create a new project'
+        'add:Create a new project'
         'access-summary:Show member counts by team role for project access (requires access groups entitlement)'
         'summary:Show member counts by team role for project access (requires access groups entitlement)'
         'checks:List, add, or remove deployment checks for a project (GET/POST/DELETE /v2/projects/.../checks)'
@@ -3321,7 +3323,7 @@ _vercel_node() {
         'rm:Delete a project'
         'token:Get a development OIDC token for a project'
       )
-      alias_pairs=(summary access-summary ls list member members accessgroups access-groups unpause resume set update rm remove)
+      alias_pairs=(add create summary access-summary ls list member members accessgroups access-groups unpause resume set update rm remove)
       opts=(
         '(-N --next)'{-N+,--next=}'[Show next page of results]:MS: '
         '--limit=[Number of results to return per page (default: 20, max: 100)]:NUMBER: '
@@ -3332,7 +3334,7 @@ _vercel_node() {
       )
       args=(': :->command')
       ;;
-    'project add')
+    'project create')
       args=(':name: ')
       ;;
     'project access-summary')
@@ -4738,8 +4740,8 @@ _vercel_node() {
       ;;
     'teams')
       subs=(
-        'add:Create a new team'
         'create:Create a new team'
+        'add:Create a new team'
         'invite:Invite a new member to a team'
         'list:Show all teams that you'\''re a member of'
         'ls:Show all teams that you'\''re a member of'
@@ -4751,10 +4753,10 @@ _vercel_node() {
         'members:List, invite, or remove members from the current team'
         'member:List, invite, or remove members from the current team'
       )
-      alias_pairs=(create add ls list access-request request change switch member members)
+      alias_pairs=(add create ls list access-request request change switch member members)
       args=(': :->command')
       ;;
-    'teams add')
+    'teams create')
       opts=(
         '--slug=[Team URL slug (e.g. acme for vercel.com/acme); required in non-interactive mode]:slug: '
         '--name=[Display name for the team; required in non-interactive mode]:name: '
@@ -4809,15 +4811,15 @@ _vercel_node() {
       ;;
     'tokens')
       subs=(
-        'add:Create a new personal authentication token'
         'create:Create a new personal authentication token'
+        'add:Create a new personal authentication token'
         'list:List your personal authentication tokens'
         'ls:List your personal authentication tokens'
         'remove:Delete a personal authentication token by ID'
         'rm:Delete a personal authentication token by ID'
         'delete:Delete a personal authentication token by ID'
       )
-      alias_pairs=(create add ls list rm remove delete remove)
+      alias_pairs=(add create ls list rm remove delete remove)
       opts=(
         '(-F --format)'{-F+,--format=}'[Specify the output format (json)]:FORMAT:(json)'
         '--json[Output as JSON]'
@@ -4826,7 +4828,7 @@ _vercel_node() {
       )
       args=(': :->command')
       ;;
-    'tokens add')
+    'tokens create')
       opts=(
         '(-F --format)'{-F+,--format=}'[Specify the output format (json)]:FORMAT:(json)'
         '--json[Output as JSON]'
@@ -4859,13 +4861,13 @@ _vercel_node() {
       ;;
     'traces')
       subs=(
-        'get:Fetch a captured trace by request id.'
+        'get:Fetch a captured trace by trace ID or request ID'
         'search:Search team spans. Use --project to filter one project. Results are newest first. Duration filters do not sort results.'
         'create:Capture a session trace for a request (alias for `vercel curl --trace`).'
         'config:Manage trace sampling rules for a Vercel project.'
       )
       opts=(
-        '--json[Print the raw trace JSON to stdout instead of the markdown summary.]'
+        '--json[Print the raw trace JSON to stdout]'
         '--project=[Project name or id to fetch the trace from (overrides the linked project).]:NAME|ID: '
         '--open[Open the trace in the Vercel Dashboard instead of printing it.]'
         '--view=[Dashboard view to open. Only valid with --open. Defaults to timeline.]:timeline|tree|waterfall:(timeline tree waterfall)'
@@ -4874,12 +4876,12 @@ _vercel_node() {
       ;;
     'traces get')
       opts=(
-        '--json[Print the raw trace JSON to stdout instead of the markdown summary.]'
+        '--json[Print the raw trace JSON to stdout]'
         '--project=[Project name or id to fetch the trace from (overrides the linked project).]:NAME|ID: '
         '--open[Open the trace in the Vercel Dashboard instead of printing it.]'
         '--view=[Dashboard view to open. Only valid with --open. Defaults to timeline.]:timeline|tree|waterfall:(timeline tree waterfall)'
       )
-      args=('::requestId: ')
+      args=(':id: ')
       ;;
     'traces search')
       opts=(
@@ -5022,8 +5024,8 @@ _vercel_node() {
         'list:List container registry repositories for a project'
         'inspect:Show details for a single repository'
         'get:Show details for a single repository'
-        'add:Create a container registry repository'
         'create:Create a container registry repository'
+        'add:Create a container registry repository'
         'config:Configure a container registry repository, such as the repository'\''s visibility'
         'rm:Delete a container registry repository'
         'remove:Delete a container registry repository'
@@ -5038,7 +5040,7 @@ _vercel_node() {
         'permissions:Manage which teams can pull images from a container registry repository'
         'permission:Manage which teams can pull images from a container registry repository'
       )
-      alias_pairs=(list ls get inspect create add remove rm delete rm tags tag images image permission permissions)
+      alias_pairs=(list ls get inspect add create remove rm delete rm tags tag images image permission permissions)
       args=(': :->command')
       ;;
     'vcr ls')
@@ -5058,7 +5060,7 @@ _vercel_node() {
       )
       args=(':repository: ')
       ;;
-    'vcr add')
+    'vcr create')
       opts=(
         '(-p --project)'{-p+,--project=}'[Project name or ID (defaults to the linked project).]:NAME_OR_ID: '
         '(-F --format)'{-F+,--format=}'[Specify the output format (json)]:FORMAT:(json)'
