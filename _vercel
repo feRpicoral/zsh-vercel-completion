@@ -1,6 +1,6 @@
 #compdef vercel vc
 
-# Generated from the command definitions bundled with Vercel CLI 62.1.0 (sandbox 4.4.0).
+# Generated from the command definitions bundled with Vercel CLI 63.1.2 (sandbox 4.4.0).
 # Hidden commands and deprecated options are left out, as they are in `vercel --help`.
 
 _vercel_node() {
@@ -16,7 +16,7 @@ _vercel_node() {
         'aliases:Interact with deployment aliases'
         'ln:Interact with deployment aliases'
         'activity:List user activity events'
-        'api:Make authenticated HTTP requests to the Vercel API [beta]'
+        'api:Make authenticated HTTP requests to the Vercel API'
         'blob:Interact with Vercel Blob'
         'budgets:Show and manage Spend Management for on-demand charges after included credit [beta]'
         'budget:Show and manage Spend Management for on-demand charges after included credit [beta]'
@@ -32,7 +32,7 @@ _vercel_node() {
         'contract:Show contract information for all billing periods'
         'crons:Manage cron jobs for a project [beta]'
         'cron:Manage cron jobs for a project [beta]'
-        'curl:Make curl requests to Vercel deployments with automatic protection bypass [beta]'
+        'curl:Make curl requests to Vercel deployments with automatic protection bypass'
         'deploy:Deploy your project to Vercel'
         'deploy-hooks:Manage deploy hooks for Git-triggered builds'
         'deploy-hook:Manage deploy hooks for Git-triggered builds'
@@ -67,6 +67,7 @@ _vercel_node() {
         'microfrontends:Manage microfrontends groups that compose multiple projects into one cohesive application'
         'mf:Manage microfrontends groups that compose multiple projects into one cohesive application'
         'open:Opens the current project in the Vercel Dashboard'
+        'pricing:Show Hobby, Pro, and Enterprise features from the public Vercel pricing table'
         'project:Manage your Vercel projects'
         'projects:Manage your Vercel projects'
         'promote:Promote an existing Deployment to current'
@@ -83,7 +84,7 @@ _vercel_node() {
         'sandbox:Interact with Vercel Sandbox'
         'schedules:Manage schedules for the current project [beta]'
         'security:Inspect the security posture of the current team'
-        'setup:Set up your machine for Vercel: install the Vercel plugin for Claude Code and Codex and connect local coding agents to...'
+        'setup:Set up your machine for Vercel: install the Vercel plugin for Claude Code, Codex, and OpenCode and connect local coding...'
         'signup:Create a Vercel account and sign in'
         'skills:Discover agent skills relevant to your project'
         'storage:Create, connect, and manage storage resources (Blob, Global Config, Marketplace, and 1P) for your Projects'
@@ -95,8 +96,8 @@ _vercel_node() {
         'telemetry:Allows you to enable or disable telemetry collection'
         'traces:Fetch project traces and search spans across a Vercel team'
         'upgrade:Upgrade the current global or native Vercel CLI installation'
-        'webhooks:Manage webhooks [beta]'
-        'webhook:Manage webhooks [beta]'
+        'webhooks:Manage webhooks'
+        'webhook:Manage webhooks'
         'usage:Show billing usage and costs for the current billing cycle or a custom date range'
         'vcr:Manage Vercel Container Registry repositories and images (see `vcr image`)'
         'version:Manages the installed Vercel CLI version'
@@ -155,8 +156,8 @@ _vercel_node() {
       opts=(
         '--project=[Project name or id to query (overrides the linked project)]:NAME|ID: '
         '--environment=[Environment to query Agent Runs from (default: production)]:production|preview:(production preview)'
-        '--since=[Only include Agent Runs after this time (ISO 8601 or relative: 1h, 30m, 7d)]:TIME: '
-        '--until=[Only include Agent Runs before this time (requires --since; default: now)]:TIME: '
+        '(-s --since)'{-s+,--since=}'[Start time: ISO 8601 or relative, like 1h or 7d]:TIME: '
+        '(-u --until)'{-u+,--until=}'[End time: ISO 8601 or relative; requires --since (default: now)]:TIME: '
         '--search=[Search Agent Runs by title]:TEXT: '
         '--next=[Continue from a previous response]:NUMBER: '
         '(-n --limit)'{-n+,--limit=}'[Number of Agent Runs per page (max: 100)]:N: '
@@ -167,8 +168,8 @@ _vercel_node() {
       opts=(
         '--project=[Project name or id to query (overrides the linked project)]:NAME|ID: '
         '--environment=[Environment to query Agent Runs from (default: production)]:production|preview:(production preview)'
-        '--since=[Only include Agent Runs after this time (ISO 8601 or relative: 1h, 30m, 7d)]:TIME: '
-        '--until=[Only include Agent Runs before this time (requires --since; default: now)]:TIME: '
+        '(-s --since)'{-s+,--since=}'[Start time: ISO 8601 or relative, like 1h or 7d]:TIME: '
+        '(-u --until)'{-u+,--until=}'[End time: ISO 8601 or relative; requires --since (default: now)]:TIME: '
         '--json[Print the raw API response as JSON to stdout]'
       )
       args=(':runId: ')
@@ -177,8 +178,8 @@ _vercel_node() {
       opts=(
         '--project=[Project name or id to query (overrides the linked project)]:NAME|ID: '
         '--environment=[Environment to query Agent Runs from (default: production)]:production|preview:(production preview)'
-        '--since=[Only include Agent Runs after this time (ISO 8601 or relative: 1h, 30m, 7d)]:TIME: '
-        '--until=[Only include Agent Runs before this time (requires --since; default: now)]:TIME: '
+        '(-s --since)'{-s+,--since=}'[Start time: ISO 8601 or relative, like 1h or 7d]:TIME: '
+        '(-u --until)'{-u+,--until=}'[End time: ISO 8601 or relative; requires --since (default: now)]:TIME: '
         '--next=[Fetch newer trace activity using a cursor from a previous response]:CURSOR: '
         '--previous=[Fetch older trace activity using a cursor from a previous response]:CURSOR: '
         '--max-field-length=[Maximum length for individual string fields in the trace (default: 8000; 0 disables truncation)]:N: '
@@ -189,8 +190,8 @@ _vercel_node() {
     'agent-runs projects')
       opts=(
         '--environment=[Environment to query Agent Runs from (default: production)]:production|preview:(production preview)'
-        '--since=[Only include Agent Runs after this time (ISO 8601 or relative: 1h, 30m, 7d)]:TIME: '
-        '--until=[Only include Agent Runs before this time (requires --since; default: now)]:TIME: '
+        '(-s --since)'{-s+,--since=}'[Start time: ISO 8601 or relative, like 1h or 7d]:TIME: '
+        '(-u --until)'{-u+,--until=}'[End time: ISO 8601 or relative; requires --since (default: now)]:TIME: '
         '--json[Print the raw API response as JSON to stdout]'
       )
       ;;
@@ -235,6 +236,8 @@ _vercel_node() {
       ;;
     'ai-gateway api-keys list')
       opts=(
+        '--limit=[Number of results to return per page (default: 20, max: 100)]:NUMBER: '
+        '(-N --next)'{-N+,--next=}'[Show the next page using the cursor from the previous output]:CURSOR: '
         '(-F --format)'{-F+,--format=}'[Specify the output format (json)]:FORMAT:(json)'
       )
       ;;
@@ -515,8 +518,8 @@ _vercel_node() {
         '(-p --project)'{-p+,--project=}'[Filter by project (overrides auto-detected linked project).]:NAME_OR_ID: '
         '(-a --all)'{-a,--all}'[Show team-wide alerts (ignore linked project auto-scoping).]'
         '--ai[Print AI-focused sections (title, resolved time, summary, key findings) instead of table output.]'
-        '--since=[Start of time range (ISO-8601). Defaults to 24 hours ago if not provided.]:ISO_DATE: '
-        '--until=[End of time range (ISO-8601). Defaults to now.]:ISO_DATE: '
+        '(-s --since)'{-s+,--since=}'[Start time: ISO 8601 or relative, like 1h or 7d (default: 24h ago)]:TIME: '
+        '(-u --until)'{-u+,--until=}'[End time: ISO 8601 or relative (default: now)]:TIME: '
         '--limit=[Number of results to return per page (default: 20, max: 100)]:NUMBER: '
         '(-F --format)'{-F+,--format=}'[Specify the output format (json)]:FORMAT:(json)'
         '--json[Output as JSON]'
@@ -537,8 +540,8 @@ _vercel_node() {
         'ls:List alert rules for a project or team'
         'list:List alert rules for a project or team'
         'schema:Show alert rule request fields and examples'
-        'add:Create an alert rule from a JSON body'
         'create:Create an alert rule from a JSON body'
+        'add:Create an alert rule from a JSON body'
         'inspect:Show one alert rule by ID'
         'get:Show one alert rule by ID'
         'rm:Delete an alert rule'
@@ -548,7 +551,14 @@ _vercel_node() {
         'patch:Patch an alert rule or change its scope'
         'notifications:List and manage linked Slack and webhook destinations for alert rules'
       )
-      alias_pairs=(list ls create add get inspect remove rm delete rm patch update)
+      alias_pairs=(list ls add create get inspect remove rm delete rm patch update)
+      opts=(
+        '(-p --project)'{-p+,--project=}'[Use a project by name or ID]:NAME_OR_ID: '
+        '(-a --all)'{-a,--all}'[List all accessible rules in the selected team]'
+        '*--type=[Filter by rule type]:TYPE: '
+        '(-F --format)'{-F+,--format=}'[Specify the output format (json)]:FORMAT:(json)'
+        '--json[Output as JSON]'
+      )
       args=(': :->command')
       ;;
     'alerts rules ls')
@@ -566,7 +576,7 @@ _vercel_node() {
         '(-F --format)'{-F+,--format=}'[Specify the output format (json)]:FORMAT:(json)'
       )
       ;;
-    'alerts rules add')
+    'alerts rules create')
       opts=(
         '(-p --project)'{-p+,--project=}'[Use a project by name or ID]:NAME_OR_ID: '
         '(-a --all)'{-a,--all}'[Apply the rule to all projects in the selected team]'
@@ -690,8 +700,8 @@ _vercel_node() {
       )
       opts=(
         '*--type=[Filter by event type.]:TYPE: '
-        '--since=[Show events after this date (ISO 8601 or relative: 1d, 7d, 30d).]:DATE: '
-        '--until=[Show events before this date (ISO 8601 or relative).]:DATE: '
+        '(-s --since)'{-s+,--since=}'[Start time: ISO 8601 or relative, like 1h or 7d]:TIME: '
+        '(-u --until)'{-u+,--until=}'[End time: ISO 8601 or relative (default: now)]:TIME: '
         '(-p --project)'{-p+,--project=}'[Filter by project (overrides auto-detected linked project).]:NAME_OR_ID: '
         '(-a --all)'{-a,--all}'[Show all team events (ignore linked project auto-scoping).]'
         '--limit=[Number of results to return per page (default: 20, max: 100)]:NUMBER: '
@@ -1009,6 +1019,24 @@ _vercel_node() {
       )
       ;;
     'buy domain')
+      opts=(
+        '--amount=[Price a person approved for this charge, in USD. Required without a terminal; nothing is charged if the price changed]:USD: '
+        '--use-billing-details[Fill registrant details you don'\''t pass from the team'\''s billing info (email and address).]'
+        '--first-name=[Registrant first name]:TEXT: '
+        '--last-name=[Registrant last name]:TEXT: '
+        '--email=[Registrant email]:TEXT: '
+        '--phone=[Registrant phone with country code, such as +11122233344]:TEXT: '
+        '--address=[Registrant street address]:TEXT: '
+        '--city=[Registrant city]:TEXT: '
+        '--state=[Registrant state or province]:TEXT: '
+        '--zip=[Registrant postal or ZIP code]:TEXT: '
+        '--country=[Registrant 2-letter country code, such as US]:TEXT: '
+        '--company=[Registrant company name (optional)]:TEXT: '
+        '--auto-renew[Renew the domain automatically at the end of each term. Without a terminal, pass --auto-renew or --no-auto-renew]'
+        '--no-auto-renew[Don'\''t renew the domain automatically]'
+        '(-F --format)'{-F+,--format=}'[Specify the output format (json)]:FORMAT:(json)'
+        '--json[Output as JSON]'
+      )
       args=(':domain: ')
       ;;
     'cache')
@@ -1364,6 +1392,11 @@ _vercel_node() {
         'delete:Remove a deploy hook by id'
       )
       alias_pairs=(ls list add create rm remove delete remove)
+      opts=(
+        '(-F --format)'{-F+,--format=}'[Specify the output format (json)]:FORMAT:(json)'
+        '--json[Output as JSON]'
+        '(-p --project)'{-p+,--project=}'[Project name or ID (defaults to the linked project)]:NAME_OR_ID: '
+      )
       args=(': :->command')
       ;;
     'deploy-hooks list')
@@ -1511,6 +1544,24 @@ _vercel_node() {
       args=(':domain: ' '::project: ')
       ;;
     'domains buy')
+      opts=(
+        '--amount=[Price a person approved for this charge, in USD. Required without a terminal; nothing is charged if the price changed]:USD: '
+        '--use-billing-details[Fill registrant details you don'\''t pass from the team'\''s billing info (email and address).]'
+        '--first-name=[Registrant first name]:TEXT: '
+        '--last-name=[Registrant last name]:TEXT: '
+        '--email=[Registrant email]:TEXT: '
+        '--phone=[Registrant phone with country code, such as +11122233344]:TEXT: '
+        '--address=[Registrant street address]:TEXT: '
+        '--city=[Registrant city]:TEXT: '
+        '--state=[Registrant state or province]:TEXT: '
+        '--zip=[Registrant postal or ZIP code]:TEXT: '
+        '--country=[Registrant 2-letter country code, such as US]:TEXT: '
+        '--company=[Registrant company name (optional)]:TEXT: '
+        '--auto-renew[Renew the domain automatically at the end of each term. Without a terminal, pass --auto-renew or --no-auto-renew]'
+        '--no-auto-renew[Don'\''t renew the domain automatically]'
+        '(-F --format)'{-F+,--format=}'[Specify the output format (json)]:FORMAT:(json)'
+        '--json[Output as JSON]'
+      )
       args=(':domain: ')
       ;;
     'domains check')
@@ -1559,6 +1610,7 @@ _vercel_node() {
       ;;
     'domains renew')
       opts=(
+        '--amount=[Price a person approved for this charge, in USD. Required without a terminal; nothing is charged if the price changed]:USD: '
         '(-F --format)'{-F+,--format=}'[Specify the output format (json)]:FORMAT:(json)'
         '--json[Output as JSON]'
       )
@@ -1950,8 +2002,8 @@ _vercel_node() {
       opts=(
         '--project=[Project name or ID (defaults to the linked project)]:NAME_OR_ID: '
         '--json[Output as JSON]'
-        '--since=[Start of the window: relative (24h, 7d) or ISO date (default: 24h ago)]:TIME: '
-        '--until=[End of the window (default: now)]:TIME: '
+        '(-s --since)'{-s+,--since=}'[Start time: ISO 8601 or relative, like 1h or 7d (default: 24h ago)]:TIME: '
+        '(-u --until)'{-u+,--until=}'[End time: ISO 8601 or relative (default: now)]:TIME: '
       )
       ;;
     'firewall alerts inspect')
@@ -1974,8 +2026,8 @@ _vercel_node() {
       opts=(
         '--project=[Project name or ID (defaults to the linked project)]:NAME_OR_ID: '
         '--json[Output as JSON]'
-        '--since=[Start of the window: relative (1h, 6h) or ISO date (default: 1h ago)]:TIME: '
-        '--until=[End of the window (default: now)]:TIME: '
+        '(-s --since)'{-s+,--since=}'[Start time: ISO 8601 or relative, like 1h or 7d (default: 1h ago)]:TIME: '
+        '(-u --until)'{-u+,--until=}'[End time: ISO 8601 or relative (default: now)]:TIME: '
         '--limit=[Number of actions to show (default: 10)]:NUMBER: '
       )
       ;;
@@ -1985,8 +2037,8 @@ _vercel_node() {
         '--json[Output as JSON]'
         '--host=[Narrow to a hostname]:HOSTNAME: '
         '--action=[Narrow to an action (challenge, deny, log, …)]:ACTION: '
-        '--since=[Start of the window: relative (1h, 6h) or ISO date (default: 1h ago)]:TIME: '
-        '--until=[End of the window (default: now)]:TIME: '
+        '(-s --since)'{-s+,--since=}'[Start time: ISO 8601 or relative, like 1h or 7d (default: 1h ago)]:TIME: '
+        '(-u --until)'{-u+,--until=}'[End time: ISO 8601 or relative (default: now)]:TIME: '
         '--paths[Include the top request paths]'
       )
       args=(':ip: ')
@@ -2004,8 +2056,8 @@ _vercel_node() {
       opts=(
         '--project=[Project name or ID (defaults to the linked project)]:NAME_OR_ID: '
         '--json[Output as JSON]'
-        '--since=[Start of the window: relative (1h, 24h) or ISO date (default: 24h ago)]:TIME: '
-        '--until=[End of the window (default: now)]:TIME: '
+        '(-s --since)'{-s+,--since=}'[Start time: ISO 8601 or relative, like 1h or 7d (default: 24h ago)]:TIME: '
+        '(-u --until)'{-u+,--until=}'[End time: ISO 8601 or relative (default: now)]:TIME: '
         '--top=[Rows per top list (default: 5)]:NUMBER: '
         '*--dimension=[Top list to include: ip, ja4, asn, user-agent, path, rule, host, bot, unknown-bot, country, action (repeatable;...]:DIM: '
         '--alert=[Scope the window and rule to one alert id from `firewall alerts list`]:ALERT_ID: '
@@ -2027,8 +2079,8 @@ _vercel_node() {
       opts=(
         '--project=[Project name or ID (defaults to the linked project)]:NAME_OR_ID: '
         '--json[Output as JSON]'
-        '--since=[Start of the window: relative (1h, 24h) or ISO date (default: 24h ago)]:TIME: '
-        '--until=[End of the window (default: now)]:TIME: '
+        '(-s --since)'{-s+,--since=}'[Start time: ISO 8601 or relative, like 1h or 7d (default: 24h ago)]:TIME: '
+        '(-u --until)'{-u+,--until=}'[End time: ISO 8601 or relative (default: now)]:TIME: '
         '--group-by=[Dimension to break the traffic down by (default: depends on the inspected dimension)]:DIM: '
         '--top=[Rows in the breakdown (default: 10)]:NUMBER: '
         '--alert=[Scope the window and rule to one alert id from `firewall alerts list`]:ALERT_ID: '
@@ -2053,7 +2105,7 @@ _vercel_node() {
         'ls:List all feature flags for the current project'
         'inspect:Display information about a feature flag'
         'versions:List and compare version history for a feature flag'
-        'evaluations:Display evaluation metrics for a feature flag'
+        'evaluations:Display evaluation metrics for a feature flag, or for every flag in the project when no flag is given'
         'create:Create a new feature flag'
         'add:Create a new feature flag'
         'open:Open feature flags in the Vercel dashboard'
@@ -2069,6 +2121,7 @@ _vercel_node() {
         'disable:Shortcut to serve the false variant of a boolean feature flag in an environment'
         'enable:Shortcut to serve the true variant of a boolean feature flag in an environment'
         'rules:Manage conditional rules for feature flags'
+        'targets:Manage direct targets: entity values that always receive a fixed variant'
         'segments:Manage feature flag segments'
         'entities:Manage the entity schema used for flag targeting'
         'labels:Discover label lists and manage labels for string or stringArray attributes'
@@ -2145,12 +2198,13 @@ _vercel_node() {
     'flags evaluations')
       opts=(
         '--project=[Project name or ID (defaults to the linked project)]:NAME_OR_ID: '
-        '(-s --since)'{-s+,--since=}'[Start time: relative (1h, 30m, 2d) or ISO date (default: 1h)]:TIME: '
-        '(-u --until)'{-u+,--until=}'[End time (default: now)]:TIME: '
+        '(-s --since)'{-s+,--since=}'[Start time: ISO 8601 or relative, like 1h or 7d (default: 1h ago)]:TIME: '
+        '(-u --until)'{-u+,--until=}'[End time: ISO 8601 or relative (default: now)]:TIME: '
         '(-g --granularity)'{-g+,--granularity=}'[Time bucket size: 1m, 5m, 15m, 1h, 4h, 1d (default: auto)]:SIZE: '
+        '*--group-by=[Dimensions to group by (repeatable): variant, flag, sdk-key, client, environment, reason (default: variant for one...]:DIM: '
         '--json[Output in JSON format]'
       )
-      args=(':flag: ')
+      args=('::flag: ')
       ;;
     'flags create')
       globals=0
@@ -2403,6 +2457,55 @@ _vercel_node() {
       )
       args=(':flag: ' ':rule: ')
       ;;
+    'flags targets')
+      subs=(
+        'list:List the direct targets of a feature flag environment'
+        'ls:List the direct targets of a feature flag environment'
+        'add:Serve a variant to specific entity values in a feature flag environment.'
+        'remove:Remove direct targets from a feature flag environment'
+        'rm:Remove direct targets from a feature flag environment'
+      )
+      alias_pairs=(ls list rm remove)
+      args=(': :->command')
+      ;;
+    'flags targets list')
+      opts=(
+        '--project=[Project name or ID (defaults to the linked project)]:NAME_OR_ID: '
+        '(-e --environment)'{-e+,--environment=}'[The environment to list targets for (production, preview, or development)]:ENV:(production preview development)'
+        '--json[Output as JSON]'
+      )
+      args=(':flag: ')
+      ;;
+    'flags targets add')
+      globals=0
+      opts=(
+        '--project=[Project name or ID (defaults to the linked project)]:NAME_OR_ID: '
+        '(-e --environment)'{-e+,--environment=}'[The environment to change (production, preview, or development)]:ENV:(production preview development)'
+        '(-v --variant)'{-v+,--variant=}'[Variant ID or value to serve to the targets (defaults to true for boolean flags)]:VARIANT: '
+        '--message=[Optional revision message for the update]:TEXT: '
+        '--json[Output as JSON]'
+        '(-h --help)'{-h,--help}'[Output usage information]'
+        '--version[Output the version number]'
+        '--cwd=[Sets the current working directory for a single run of a command]:DIR:_files -/'
+        '(-A --local-config)'{-A+,--local-config=}'[Path to the local `vercel.json` file]:FILE:_files'
+        '(-Q --global-config)'{-Q+,--global-config=}'[Path to the global `.vercel` directory]:DIR:_files -/'
+        '(-d --debug)'{-d,--debug}'[Debug mode (default off)]'
+        '--no-color[No color mode (default off)]'
+        '--non-interactive[Run without interactive prompts; when an agent is detected this is the default]'
+        '(-S --scope)'{-S+,--scope=}'[Set a custom scope]:scope: '
+        '(-t --token)'{-t+,--token=}'[Login token]:TOKEN: '
+      )
+      args=(':flag: ' '*:entity.attribute=value: ')
+      ;;
+    'flags targets remove')
+      opts=(
+        '--project=[Project name or ID (defaults to the linked project)]:NAME_OR_ID: '
+        '(-e --environment)'{-e+,--environment=}'[The environment to change (production, preview, or development)]:ENV:(production preview development)'
+        '--message=[Optional revision message for the update]:TEXT: '
+        '--json[Output as JSON]'
+      )
+      args=(':flag: ' '*:entity.attribute=value: ')
+      ;;
     'flags segments')
       subs=(
         'list:List all feature flag segments for the current project'
@@ -2579,11 +2682,12 @@ _vercel_node() {
       subs=(
         'list:List all SDK keys for the current project'
         'ls:List all SDK keys for the current project'
+        'create:Create a new SDK key'
         'add:Create a new SDK key'
         'remove:Delete an SDK key'
         'rm:Delete an SDK key'
       )
-      alias_pairs=(ls list rm remove)
+      alias_pairs=(ls list add create rm remove)
       args=(': :->command')
       ;;
     'flags sdk-keys list')
@@ -2592,7 +2696,7 @@ _vercel_node() {
         '--json[Output in JSON format]'
       )
       ;;
-    'flags sdk-keys add')
+    'flags sdk-keys create')
       opts=(
         '--project=[Project name or ID (defaults to the linked project)]:NAME_OR_ID: '
         '--type=[The type of SDK key (server, client, or mobile)]:TYPE: '
@@ -2638,10 +2742,10 @@ _vercel_node() {
       subs=(
         'list:List Global Config stores for the current team'
         'ls:List Global Config stores for the current team'
-        'add:Create a Global Config store'
         'create:Create a Global Config store'
-        'get:Show metadata for a Global Config (id `ecfg_…` or slug)'
+        'add:Create a Global Config store'
         'inspect:Show metadata for a Global Config (id `ecfg_…` or slug)'
+        'get:Show metadata for a Global Config (id `ecfg_…` or slug)'
         'update:Rename a Global Config (`--slug`) and/or patch items (`--patch` JSON)'
         'remove:Delete a Global Config store'
         'rm:Delete a Global Config store'
@@ -2650,7 +2754,7 @@ _vercel_node() {
         'tokens:List, create (`--add`), or revoke (`--remove`) read tokens for a Global Config'
         'backups:List, inspect, or restore Global Config backups'
       )
-      alias_pairs=(ls list create add inspect get rm remove delete remove)
+      alias_pairs=(ls list add create get inspect rm remove delete remove)
       opts=(
         '(-F --format)'{-F+,--format=}'[Specify the output format (json)]:FORMAT:(json)'
         '--json[Output as JSON]'
@@ -2663,7 +2767,7 @@ _vercel_node() {
         '--json[Output as JSON]'
       )
       ;;
-    'global-config add')
+    'global-config create')
       opts=(
         '(-F --format)'{-F+,--format=}'[Specify the output format (json)]:FORMAT:(json)'
         '--json[Output as JSON]'
@@ -2671,7 +2775,7 @@ _vercel_node() {
       )
       args=(':slug: ')
       ;;
-    'global-config get')
+    'global-config inspect')
       opts=(
         '(-F --format)'{-F+,--format=}'[Specify the output format (json)]:FORMAT:(json)'
         '--json[Output as JSON]'
@@ -2742,7 +2846,7 @@ _vercel_node() {
     'inspect')
       opts=(
         '--timeout=[Time to wait for deployment completion [3m\]]:TIME: '
-        '--wait[Blocks until deployment completes]'
+        '--wait[Blocks until deployment completes (exits 124 if --timeout is reached first)]'
         '(-l --logs)'{-l,--logs}'[Prints the build logs instead of the deployment summary]'
         '(-F --format)'{-F+,--format=}'[Specify the output format (json)]:FORMAT:(json)'
         '--json[Output as JSON]'
@@ -3014,8 +3118,8 @@ _vercel_node() {
         'ls:Show all KMS issuers'
         'inspect:Show an issuer with its signing keys and grants'
         'get:Show an issuer with its signing keys and grants'
-        'add:Create an issuer with a Vercel-generated signing key'
         'create:Create an issuer with a Vercel-generated signing key'
+        'add:Create an issuer with a Vercel-generated signing key'
         'import:Create an issuer from a private key you already have'
         'update:Rename an issuer or change its claims schema'
         'remove:Delete an issuer and all of its keys'
@@ -3031,7 +3135,7 @@ _vercel_node() {
         'rm-grant:Revoke a project'\''s permission to sign with an issuer'
         'delete-grant:Revoke a project'\''s permission to sign with an issuer'
       )
-      alias_pairs=(ls list get inspect create add rm remove delete remove rm-grant remove-grant delete-grant remove-grant)
+      alias_pairs=(ls list get inspect add create rm remove delete remove rm-grant remove-grant delete-grant remove-grant)
       opts=(
         '(-F --format)'{-F+,--format=}'[Specify the output format (json)]:FORMAT:(json)'
         '--json[Output as JSON]'
@@ -3055,7 +3159,7 @@ _vercel_node() {
       )
       args=(':issuerId: ')
       ;;
-    'kms add')
+    'kms create')
       opts=(
         '(-a --algorithm)'{-a+,--algorithm=}'[Signing algorithm: RS256, RS384, RS512, PS256, PS384, PS512, ES256, ES384, ES512, EdDSA (default: RS512)]:ALGORITHM: '
         '--claims-schema=[JSON Schema validating token claims, as inline JSON, `@<file>`, or `@-` for stdin]:JSON: '
@@ -3208,8 +3312,8 @@ _vercel_node() {
         '*--level=[Filter by log level: error, warning, info, fatal]:level: '
         '--status-code=[Filter by HTTP status code (e.g., 500, 4xx)]:status-code: '
         '*--source=[Filter by source: serverless, edge-function, edge-middleware, static]:source: '
-        '--since=[Start time (ISO format or relative: 1h, 30m)]:since: '
-        '--until=[End time (ISO format or relative, default: now)]:until: '
+        '(-s --since)'{-s+,--since=}'[Start time: ISO 8601 or relative, like 1h or 7d]:TIME: '
+        '(-u --until)'{-u+,--until=}'[End time: ISO 8601 or relative (default: now)]:TIME: '
         '(-n --limit)'{-n+,--limit=}'[Maximum number of results (default: 100)]:limit: '
         '(-j --json)'{-j,--json}'[Output logs as JSON Lines for piping to other tools]'
         '(-f --follow)'{-f,--follow}'[Stream live runtime logs from a deployment]'
@@ -3294,9 +3398,17 @@ _vercel_node() {
         '(-y --yes)'{-y,--yes}'[Skip confirmation when linking is required (e.g. in non-interactive mode)]'
       )
       ;;
+    'pricing')
+      opts=(
+        '(-F --format)'{-F+,--format=}'[Specify the output format (json)]:FORMAT:(json)'
+        '--json[Output as JSON]'
+      )
+      args=('*:query: ')
+      ;;
     'project')
       subs=(
-        'add:Add a new project'
+        'create:Create a new project'
+        'add:Create a new project'
         'access-summary:Show member counts by team role for project access (requires access groups entitlement)'
         'summary:Show member counts by team role for project access (requires access groups entitlement)'
         'checks:List, add, or remove deployment checks for a project (GET/POST/DELETE /v2/projects/.../checks)'
@@ -3312,6 +3424,8 @@ _vercel_node() {
         'speed-insights:Enable or disable Speed Insights for a project'
         'pause:Pause production traffic for a project (visitors will see an error page)'
         'observability:Enable or disable Observability Plus for a project'
+        'priority:Upgrade a project to Priority, or remove that upgrade'
+        'priority-project:Upgrade a project to Priority, or remove that upgrade'
         'resume:Resume production traffic for a paused project'
         'unpause:Resume production traffic for a paused project'
         'update:Update one or more project settings; omitted settings remain unchanged'
@@ -3321,7 +3435,7 @@ _vercel_node() {
         'rm:Delete a project'
         'token:Get a development OIDC token for a project'
       )
-      alias_pairs=(summary access-summary ls list member members accessgroups access-groups unpause resume set update rm remove)
+      alias_pairs=(add create summary access-summary ls list member members accessgroups access-groups priority-project priority unpause resume set update rm remove)
       opts=(
         '(-N --next)'{-N+,--next=}'[Show next page of results]:MS: '
         '--limit=[Number of results to return per page (default: 20, max: 100)]:NUMBER: '
@@ -3332,7 +3446,7 @@ _vercel_node() {
       )
       args=(': :->command')
       ;;
-    'project add')
+    'project create')
       args=(':name: ')
       ;;
     'project access-summary')
@@ -3433,6 +3547,13 @@ _vercel_node() {
       args=('::project: ')
       ;;
     'project observability')
+      opts=(
+        '(-F --format)'{-F+,--format=}'[Specify the output format (json)]:FORMAT:(json)'
+        '--json[Output as JSON]'
+      )
+      args=(':action: ' '::name: ')
+      ;;
+    'project priority')
       opts=(
         '(-F --format)'{-F+,--format=}'[Specify the output format (json)]:FORMAT:(json)'
         '--json[Output as JSON]'
@@ -3789,8 +3910,10 @@ _vercel_node() {
         'approve:Approve the current stage of an active rolling release'
         'abort:Abort an active rolling release'
         'complete:Complete an active rolling release'
-        'fetch:Fetch details about a rolling release'
+        'inspect:Show details about a rolling release'
+        'fetch:Show details about a rolling release'
       )
+      alias_pairs=(fetch inspect)
       args=(': :->command')
       ;;
     'rolling-release configure')
@@ -3829,7 +3952,7 @@ _vercel_node() {
         '--dpl=[The deploymentId of the rolling release to complete]:dpl: '
       )
       ;;
-    'rolling-release fetch')
+    'rolling-release inspect')
       opts=(
         '--project=[Project name or ID (defaults to the linked project)]:NAME_OR_ID: '
       )
@@ -4460,6 +4583,7 @@ _vercel_node() {
       subs=(
         'list:List schedules'
         'ls:List schedules'
+        'inspect:Show a schedule'
         'get:Show a schedule'
         'create:Create a schedule'
         'update:Update a schedule'
@@ -4470,7 +4594,10 @@ _vercel_node() {
         'rm:Delete a schedule'
         'executions:Inspect schedule execution history'
       )
-      alias_pairs=(ls list rm delete)
+      alias_pairs=(ls list get inspect rm delete)
+      opts=(
+        '(-L --local)'{-L,--local}'[Use the local Schedules session started by vercel dev]'
+      )
       args=(': :->command')
       ;;
     'schedules list')
@@ -4480,12 +4607,14 @@ _vercel_node() {
         '--next=[Continue from a previous response]:CURSOR: '
         '(-F --format)'{-F+,--format=}'[Specify the output format (json)]:FORMAT:(json)'
         '--json[Output as JSON]'
+        '(-L --local)'{-L,--local}'[Use the local Schedules session started by vercel dev]'
       )
       ;;
-    'schedules get')
+    'schedules inspect')
       opts=(
         '(-F --format)'{-F+,--format=}'[Specify the output format (json)]:FORMAT:(json)'
         '--json[Output as JSON]'
+        '(-L --local)'{-L,--local}'[Use the local Schedules session started by vercel dev]'
         '--namespace=[Use a schedule namespace (default: default)]:NAMESPACE: '
       )
       args=(':name: ')
@@ -4501,6 +4630,7 @@ _vercel_node() {
         '--payload=[Set the JSON payload delivered to the target]:JSON: '
         '(-F --format)'{-F+,--format=}'[Specify the output format (json)]:FORMAT:(json)'
         '--json[Output as JSON]'
+        '(-L --local)'{-L,--local}'[Use the local Schedules session started by vercel dev]'
       )
       args=(':name: ')
       ;;
@@ -4515,14 +4645,18 @@ _vercel_node() {
         '--payload=[Replace the JSON payload; use null to remove it]:JSON: '
         '(-F --format)'{-F+,--format=}'[Specify the output format (json)]:FORMAT:(json)'
         '--json[Output as JSON]'
+        '(-L --local)'{-L,--local}'[Use the local Schedules session started by vercel dev]'
       )
       args=(':name: ')
       ;;
     'schedules enable')
       opts=(
         '--namespace=[Use a schedule namespace (default: default)]:NAMESPACE: '
+        '(-u --until)'{-u+,--until=}'[Enable only until this time, then disable again: ISO 8601 or Unix milliseconds]:TIME: '
+        '--for=[Enable only for this long, then disable again (e.g. 30m, 5h)]:DURATION: '
         '(-F --format)'{-F+,--format=}'[Specify the output format (json)]:FORMAT:(json)'
         '--json[Output as JSON]'
+        '(-L --local)'{-L,--local}'[Use the local Schedules session started by vercel dev]'
       )
       args=(':name: ')
       ;;
@@ -4531,6 +4665,7 @@ _vercel_node() {
         '--namespace=[Use a schedule namespace (default: default)]:NAMESPACE: '
         '(-F --format)'{-F+,--format=}'[Specify the output format (json)]:FORMAT:(json)'
         '--json[Output as JSON]'
+        '(-L --local)'{-L,--local}'[Use the local Schedules session started by vercel dev]'
       )
       args=(':name: ')
       ;;
@@ -4539,6 +4674,7 @@ _vercel_node() {
         '--namespace=[Use a schedule namespace (default: default)]:NAMESPACE: '
         '(-F --format)'{-F+,--format=}'[Specify the output format (json)]:FORMAT:(json)'
         '--json[Output as JSON]'
+        '(-L --local)'{-L,--local}'[Use the local Schedules session started by vercel dev]'
       )
       args=(':name: ')
       ;;
@@ -4548,6 +4684,7 @@ _vercel_node() {
         '(-y --yes)'{-y,--yes}'[Skip the confirmation prompt when deleting]'
         '(-F --format)'{-F+,--format=}'[Specify the output format (json)]:FORMAT:(json)'
         '--json[Output as JSON]'
+        '(-L --local)'{-L,--local}'[Use the local Schedules session started by vercel dev]'
       )
       args=(':name: ')
       ;;
@@ -4557,6 +4694,9 @@ _vercel_node() {
         'ls:List executions for a schedule'
       )
       alias_pairs=(ls list)
+      opts=(
+        '(-L --local)'{-L,--local}'[Local execution history is not supported]'
+      )
       args=(': :->command')
       ;;
     'schedules executions list')
@@ -4565,11 +4705,12 @@ _vercel_node() {
         '--limit=[Number of results to return per page (default: 20, max: 100)]:NUMBER: '
         '--next=[Continue from a previous response]:CURSOR: '
         '--sort=[Sort by time (asc or desc, default: desc)]:ORDER: '
-        '--from=[Start of the search window as Unix milliseconds (requires --to)]:MS: '
-        '--to=[End of the search window as Unix milliseconds (requires --from)]:MS: '
+        '(-s --since)'{-s+,--since=}'[Start time: ISO 8601 or relative, like 1h or 7d (at most 30 days before --until)]:TIME: '
+        '(-u --until)'{-u+,--until=}'[End time: ISO 8601 or relative; requires --since (default: now)]:TIME: '
         '--execution-id=[Filter by execution ID substring]:ID: '
         '(-F --format)'{-F+,--format=}'[Specify the output format (json)]:FORMAT:(json)'
         '--json[Output as JSON]'
+        '(-L --local)'{-L,--local}'[Local execution history is not supported]'
       )
       args=(':name: ')
       ;;
@@ -4598,9 +4739,9 @@ _vercel_node() {
       ;;
     'setup')
       opts=(
-        '--plugin[Only set up the Vercel plugin for Claude Code and Codex]'
+        '--plugin[Only set up the Vercel plugin for Claude Code, Codex, and OpenCode]'
         '--gateway[Only connect coding agents to the AI Gateway]'
-        '*--agent=[Select a coding agent (repeatable); plugin setup supports claude-code and codex]:NAME: '
+        '*--agent=[Select a coding agent (repeatable); plugin setup supports claude-code, codex, and opencode]:NAME: '
         '--dry-run[Show what would change without writing any files]'
         '(-y --yes)'{-y,--yes}'[Accept default value for all prompts]'
       )
@@ -4632,6 +4773,7 @@ _vercel_node() {
       subs=(
         'list:List storage resources in the current scope'
         'create:Create a storage resource (blob, global-config)'
+        'inspect:Show the details of one storage resource'
         'get:Show the details of one storage resource'
         'delete:Delete a storage resource.'
         'connect:Connect a storage resource (Blob, Marketplace, or 1P) to a project'
@@ -4639,6 +4781,7 @@ _vercel_node() {
         'update:Update an existing storage connection (environments, prefix, or credential mode)'
         'disconnect:Disconnect a storage resource from a project.'
       )
+      alias_pairs=(get inspect)
       args=(': :->command')
       ;;
     'storage list')
@@ -4659,7 +4802,7 @@ _vercel_node() {
       )
       args=(':name: ')
       ;;
-    'storage get')
+    'storage inspect')
       opts=(
         '--type=[Only match stores of one type when several share a name: blob, global-config]:TYPE: '
         '(-F --format)'{-F+,--format=}'[Specify the output format (json)]:FORMAT:(json)'
@@ -4738,8 +4881,8 @@ _vercel_node() {
       ;;
     'teams')
       subs=(
-        'add:Create a new team'
         'create:Create a new team'
+        'add:Create a new team'
         'invite:Invite a new member to a team'
         'list:Show all teams that you'\''re a member of'
         'ls:Show all teams that you'\''re a member of'
@@ -4751,10 +4894,10 @@ _vercel_node() {
         'members:List, invite, or remove members from the current team'
         'member:List, invite, or remove members from the current team'
       )
-      alias_pairs=(create add ls list access-request request change switch member members)
+      alias_pairs=(add create ls list access-request request change switch member members)
       args=(': :->command')
       ;;
-    'teams add')
+    'teams create')
       opts=(
         '--slug=[Team URL slug (e.g. acme for vercel.com/acme); required in non-interactive mode]:slug: '
         '--name=[Display name for the team; required in non-interactive mode]:name: '
@@ -4809,15 +4952,15 @@ _vercel_node() {
       ;;
     'tokens')
       subs=(
-        'add:Create a new personal authentication token'
         'create:Create a new personal authentication token'
+        'add:Create a new personal authentication token'
         'list:List your personal authentication tokens'
         'ls:List your personal authentication tokens'
         'remove:Delete a personal authentication token by ID'
         'rm:Delete a personal authentication token by ID'
         'delete:Delete a personal authentication token by ID'
       )
-      alias_pairs=(create add ls list rm remove delete remove)
+      alias_pairs=(add create ls list rm remove delete remove)
       opts=(
         '(-F --format)'{-F+,--format=}'[Specify the output format (json)]:FORMAT:(json)'
         '--json[Output as JSON]'
@@ -4826,7 +4969,7 @@ _vercel_node() {
       )
       args=(': :->command')
       ;;
-    'tokens add')
+    'tokens create')
       opts=(
         '(-F --format)'{-F+,--format=}'[Specify the output format (json)]:FORMAT:(json)'
         '--json[Output as JSON]'
@@ -4859,27 +5002,29 @@ _vercel_node() {
       ;;
     'traces')
       subs=(
-        'get:Fetch a captured trace by request id.'
+        'inspect:Fetch a captured trace by trace ID or request ID'
+        'get:Fetch a captured trace by trace ID or request ID'
         'search:Search team spans. Use --project to filter one project. Results are newest first. Duration filters do not sort results.'
         'create:Capture a session trace for a request (alias for `vercel curl --trace`).'
-        'config:Manage trace sampling rules for a Vercel project.'
+        'config:Manage Vercel tracing sampling rules for a project.'
       )
+      alias_pairs=(get inspect)
       opts=(
-        '--json[Print the raw trace JSON to stdout instead of the markdown summary.]'
+        '--json[Print the raw trace JSON to stdout]'
         '--project=[Project name or id to fetch the trace from (overrides the linked project).]:NAME|ID: '
         '--open[Open the trace in the Vercel Dashboard instead of printing it.]'
         '--view=[Dashboard view to open. Only valid with --open. Defaults to timeline.]:timeline|tree|waterfall:(timeline tree waterfall)'
       )
       args=(': :->command')
       ;;
-    'traces get')
+    'traces inspect')
       opts=(
-        '--json[Print the raw trace JSON to stdout instead of the markdown summary.]'
+        '--json[Print the raw trace JSON to stdout]'
         '--project=[Project name or id to fetch the trace from (overrides the linked project).]:NAME|ID: '
         '--open[Open the trace in the Vercel Dashboard instead of printing it.]'
         '--view=[Dashboard view to open. Only valid with --open. Defaults to timeline.]:timeline|tree|waterfall:(timeline tree waterfall)'
       )
-      args=('::requestId: ')
+      args=(':id: ')
       ;;
     'traces search')
       opts=(
@@ -4890,12 +5035,12 @@ _vercel_node() {
         '--kind=[Filter by span kind: unspecified (0), internal (1), server (2), client (3), producer (4), consumer (5)]:kind: '
         '--status=[Status: error, ok, or unset (case-insensitive)]:status: '
         '--deployment-id=[Filter by deployment ID]:deployment-id: '
-        '--request-id=[Filter by request ID. Some IDs return 404 in traces get. Reuse --scope and --project. See traces get --help.]:request-id: '
+        '--request-id=[Filter by request ID. Some IDs return 404 in traces inspect. Reuse --scope and --project. See traces inspect --help.]:request-id: '
         '--trace-id=[Filter by trace ID]:trace-id: '
         '--span-id=[Filter by span ID]:span-id: '
         '--root[Show root spans only]'
-        '--since=[Start time: 30m, ISO timestamp, or YYYY-MM-DD UTC (default: 1h)]:since: '
-        '--until=[End time: same formats as --since (default: now)]:until: '
+        '(-s --since)'{-s+,--since=}'[Start time: ISO 8601 or relative, like 1h or 7d (default: 1h ago)]:TIME: '
+        '(-u --until)'{-u+,--until=}'[End time: ISO 8601 or relative (default: now)]:TIME: '
         '(-n --limit)'{-n+,--limit=}'[Maximum number of spans (default: 100)]:limit: '
         '(-q --query)'{-q+,--query=}'[Filter spans using KQL]:query: '
         '--columns=[Columns to show, in order. Separate names with commas. Cannot be used with --json or --non-interactive.]:LIST: '
@@ -4913,12 +5058,12 @@ _vercel_node() {
       ;;
     'traces config')
       subs=(
-        'ls:List the trace sampling rules for a project'
-        'list:List the trace sampling rules for a project'
-        'set:Add or replace one trace sampling rule. The rate is a whole percentage from 1 to 100.'
-        'rm:Remove trace sampling rules. Without a path prefix, every rule for the environment is removed.'
-        'remove:Remove trace sampling rules. Without a path prefix, every rule for the environment is removed.'
-        'delete:Remove trace sampling rules. Without a path prefix, every rule for the environment is removed.'
+        'ls:List the Vercel tracing sampling rules for a project'
+        'list:List the Vercel tracing sampling rules for a project'
+        'set:Enable Vercel tracing and add or replace one sampling rule. The rate is a whole percentage from 1 to 100.'
+        'rm:Remove Vercel tracing sampling rules.'
+        'remove:Remove Vercel tracing sampling rules.'
+        'delete:Remove Vercel tracing sampling rules.'
       )
       alias_pairs=(list ls remove rm delete rm)
       args=(': :->command')
@@ -4965,15 +5110,15 @@ _vercel_node() {
       subs=(
         'list:Show all webhooks'
         'ls:Show all webhooks'
-        'get:Displays information related to a webhook'
         'inspect:Displays information related to a webhook'
+        'get:Displays information related to a webhook'
         'create:Create a new webhook'
         'add:Create a new webhook'
         'remove:Remove a webhook'
         'rm:Remove a webhook'
         'delete:Remove a webhook'
       )
-      alias_pairs=(ls list inspect get add create rm remove delete remove)
+      alias_pairs=(ls list get inspect add create rm remove delete remove)
       opts=(
         '(-F --format)'{-F+,--format=}'[Specify the output format (json)]:FORMAT:(json)'
         '--json[Output as JSON]'
@@ -4986,7 +5131,7 @@ _vercel_node() {
         '--json[Output as JSON]'
       )
       ;;
-    'webhooks get')
+    'webhooks inspect')
       opts=(
         '(-F --format)'{-F+,--format=}'[Specify the output format (json)]:FORMAT:(json)'
         '--json[Output as JSON]'
@@ -5008,8 +5153,8 @@ _vercel_node() {
       ;;
     'usage')
       opts=(
-        '--from=[Start date (YYYY-MM-DD, interpreted as midnight LA time)]:DATE: '
-        '--to=[End date (YYYY-MM-DD, interpreted as end of day LA time)]:DATE: '
+        '(-s --since)'{-s+,--since=}'[Start time: YYYY-MM-DD (midnight LA time), ISO 8601, or relative, like 7d (default: start of the current billing cycle)]:TIME: '
+        '(-u --until)'{-u+,--until=}'[End time: YYYY-MM-DD (end of day LA time), ISO 8601, or relative; requires --since (default: now)]:TIME: '
         '--breakdown=[Show usage breakdown by time period instead of aggregated totals (daily, weekly, monthly)]:PERIOD: '
         '--group-by=[Group usage by a dimension instead of aggregated totals (project, region)]:DIMENSION: '
         '(-F --format)'{-F+,--format=}'[Specify the output format (json)]:FORMAT:(json)'
@@ -5022,8 +5167,8 @@ _vercel_node() {
         'list:List container registry repositories for a project'
         'inspect:Show details for a single repository'
         'get:Show details for a single repository'
-        'add:Create a container registry repository'
         'create:Create a container registry repository'
+        'add:Create a container registry repository'
         'config:Configure a container registry repository, such as the repository'\''s visibility'
         'rm:Delete a container registry repository'
         'remove:Delete a container registry repository'
@@ -5038,7 +5183,7 @@ _vercel_node() {
         'permissions:Manage which teams can pull images from a container registry repository'
         'permission:Manage which teams can pull images from a container registry repository'
       )
-      alias_pairs=(list ls get inspect create add remove rm delete rm tags tag images image permission permissions)
+      alias_pairs=(list ls get inspect add create remove rm delete rm tags tag images image permission permissions)
       args=(': :->command')
       ;;
     'vcr ls')
@@ -5058,7 +5203,7 @@ _vercel_node() {
       )
       args=(':repository: ')
       ;;
-    'vcr add')
+    'vcr create')
       opts=(
         '(-p --project)'{-p+,--project=}'[Project name or ID (defaults to the linked project).]:NAME_OR_ID: '
         '(-F --format)'{-F+,--format=}'[Specify the output format (json)]:FORMAT:(json)'
@@ -5259,8 +5404,8 @@ _vercel_node() {
         '--order=[Order direction for grouped results: asc or desc (default: desc)]:asc|desc:(asc desc)'
         '*'{-f+,--filter=}'[KQL filter expression (repeatable, ANDed together)]:EXPR: '
         '--prod[Limit query to the production environment]'
-        '(-s --since)'{-s+,--since=}'[Start time: relative (1h, 30m, 2d) or ISO date (default: 1h)]:TIME: '
-        '(-u --until)'{-u+,--until=}'[End time (default: now)]:TIME: '
+        '(-s --since)'{-s+,--since=}'[Start time: ISO 8601 or relative, like 1h or 7d (default: 1h ago)]:TIME: '
+        '(-u --until)'{-u+,--until=}'[End time: ISO 8601 or relative (default: now)]:TIME: '
         '(-g --granularity)'{-g+,--granularity=}'[Time bucket size: 5m, 15m, 1h, 1d (default: auto)]:SIZE: '
         '--bucket-timezone=[IANA timezone for calendar bucket alignment only; does not shift --since/--until or output timestamps (e.g.,...]:ZONE: '
         '(-p --project)'{-p+,--project=}'[Project name or ID (defaults to the linked project)]:NAME_OR_ID: '
